@@ -1,0 +1,24 @@
+<h3>Add User</h3> <br>
+<div class="row">
+    <div class="col-md-12">
+        <b><label for="firstName">First Name :</label></b>
+    </div>
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" [(ngModel)]="firstName" />
+    </div>
+    <div class="col-md-6"></div>
+    <div class="col-md-12">
+        <b><label for="lastName">Last Name :</label></b>
+    </div>
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" [(ngModel)]="lastName" />
+    </div>
+    <div class="col-md-6"></div>
+    <br><br><br>
+    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1">
+        <button class="btn btn-secondary" (click)="onSubmit()" [disabled]=' !firstName || !lastName '>Submit</button>
+    </div>
+    <div class="col-md-2 col-sm-1 col-lg-1 col-xs-1">
+        <button class="btn btn-light">Cancel</button>
+    </div>
+</div>
