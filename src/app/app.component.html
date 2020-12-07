@@ -6,10 +6,10 @@
         <ul class="navbar-nav">
           <li>
             <a class="nav-item nav-link" [routerLink]="['recordlist']" [routerLinkActiveOptions]="{exact: true}"
-              routerLinkActive="router-link-active">Record List</a>
+              [routerLinkActive]="['active']">Record List</a>
           </li>
           <li>
-            <a class="nav-item nav-link" [routerLink]="['recordlist','new']" routerLinkActive="router-link-active">Add
+            <a class="nav-item nav-link" [routerLink]="['recordlist','new']" [routerLinkActive]="['active']">Add
               Record</a>
           </li>
         </ul>
