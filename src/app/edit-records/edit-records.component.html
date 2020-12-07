@@ -4,29 +4,31 @@
         <b><label for="firstName">First Name :</label></b>
     </div>
     <div class="col-md-6">
-        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" />
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="details.firstName" />
     </div>
     <div class="col-md-6"></div>
     <div class="col-md-12">
         <b><label for="lastName">Last Name :</label></b>
     </div>
     <div class="col-md-6">
-        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" />
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="details.lastName"
+            placeholder="Enter Last Name" />
     </div>
     <div class="col-md-6"></div>
     <div class="col-md-12">
-        <b><label for="avtar">Avtar :</label></b>
+        <b><label for="avatar">Avatar :</label></b>
     </div>
     <div class="col-md-6">
-
+        <img [src]="details.avatar" width="75" height="75" />
     </div>
     <div class="col-md-6"></div>
     <br><br><br>
     <div class="col-md-1">
-        <button class="btn btn-secondary">Submit</button>
+        <button class="btn btn-secondary" (click)="onUpdate()"
+            [disabled]=" !details.firstName || !details.lastName ">Submit</button>
     </div>
     <div class="col-md-1">
-        <button class="btn btn-light">Cancel</button>
+        <button class="btn btn-light"><a routerLink="../../recordlist">Cancel</a></button>
     </div>
     <div class="col-md-10"></div>
 </div>
