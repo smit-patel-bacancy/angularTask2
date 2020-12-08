@@ -4,19 +4,29 @@
         <b><label for="firstName">First Name :</label></b>
     </div>
     <div class="col-md-6">
-        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" [(ngModel)]="firstName" />
+        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name"
+            [(ngModel)]="recordDetails.firstName" />
     </div>
     <div class="col-md-6"></div>
     <div class="col-md-12">
         <b><label for="lastName">Last Name :</label></b>
     </div>
     <div class="col-md-6">
-        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" [(ngModel)]="lastName" />
+        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name"
+            [(ngModel)]="recordDetails.lastName" />
     </div>
     <div class="col-md-6"></div>
+    <div class="col-md-12" *ngIf="recordDetails.id">
+        <b><label for="avatar">Avatar :</label></b>
+    </div>
+    <div class="col-md-6" *ngIf="recordDetails.id">
+        <img [src]="" width="75" height="75" />
+    </div>
+    <!-- <div class="col-md-6"></div> -->
     <br><br><br>
     <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1">
-        <button class="btn btn-secondary" (click)="onSubmit()" [disabled]=' !firstName || !lastName '>Submit</button>
+        <button class="btn btn-secondary" (click)="onSubmit()"
+            [disabled]=' !recordDetails.firstName || !recordDetails.lastName '>Submit</button>
     </div>
     <div class="col-md-2 col-sm-1 col-lg-1 col-xs-1">
         <button class="btn btn-light"><a routerLink="../../recordlist">Cancel</a></button>
