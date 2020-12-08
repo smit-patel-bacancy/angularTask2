@@ -34,13 +34,13 @@ export class AddRecordsComponent implements OnInit {
   }
   public onAdd() {
     this.http.post('https://reqres.in/api/users', '{ "name": "firstName", "job": "lastName" }').subscribe(posts => {
-      console.log("GOT RESPONSE FROM SERVER");
+      console.log("Got Response From Server...");
       console.log(posts);
     });
   }
   public onUpdate() {
     this.http.put('https://reqres.in/api/users/' + this.recordDetails.id, '{ "name": "this.recordDetails.firstName", "job": this.recordDetails.lastName }').subscribe(posts => {
-      console.log("GOT RESPONSE FROM SERVER");
+      console.log("Got Response From Server...");
       console.log(posts);
     });
   }

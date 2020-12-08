@@ -1,30 +1,39 @@
-<table class="table table-bordered" style="width:800px">
-    <thead>
-        <tr>
-            <th scope="col">FirstName</th>
-            <th scope="col">LastName</th>
-            <th scope="col">Avatar</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let x of data, let i = index">
-            <td>{{x.firstName}}</td>
-            <td>{{x.lastName}}</td>
-            <td><img src="{{x.avatar}}" width="75" height="75" /></td>
-            <td>
-                <a [routerLink]="[i]">Edit </a>
-                <a (click)="onDelete(x.id)">| Delete</a>
-            </td>
-        </tr>
-    </tbody>
+<div class="row">
+    <div class="col-md-10">
+        <table class="table table-bordered" style="width:800px">
+            <thead>
+                <tr>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Avatar</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let x of data, let i = index">
+                    <td>{{x.firstName}}</td>
+                    <td>{{x.lastName}}</td>
+                    <td><img src="{{x.avatar}}" width="75" height="75" /></td>
+                    <td>
+                        <a [routerLink]="[i]">Edit </a>
+                        <a (click)="onDelete(x.id)">| Delete</a>
+                    </td>
+                </tr>
+            </tbody>
 
-    <nav>
-        <ul class="pagination">
-            <div *ngFor="let x of ' '.repeat(totalPages).split(''),let i = index">
-                <li class="page-item" [ngClass]="{'highlightPage': currentPage === i+1}"><a class="page-link"
-                        (click)="getData(i+1)">{{i+1}}</a></li>
-            </div>
-        </ul>
-    </nav>
-</table>
+            <nav>
+                <ul class="pagination">
+                    <div *ngFor="let x of ' '.repeat(totalPages).split(''),let i = index">
+                        <li class="page-item">
+                            <a class="page-link" (click)="getData(i+1)"
+                                [ngClass]="{'highlightPage': currentPage === i+1}">{{i+1}}</a>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </table>
+    </div>
+    <div class="col-md-2">
+        <h3 class="btn btn-success" *ngIf="isDeleted">Server Response : {{deletedMsg}}</h3>
+    </div>
+</div>

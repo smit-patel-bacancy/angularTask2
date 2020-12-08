@@ -6,8 +6,8 @@ import { Injectable, OnInit } from '@angular/core';
 export class dataStoreService implements OnInit {
 
     public data: recordType[] = [];
-    public id: number;
     public totalPages: number;
+    public deletedMsg: string;
 
     constructor(private http: HttpClient) {
         this.getData(0);
@@ -17,16 +17,17 @@ export class dataStoreService implements OnInit {
 
     public getData(id: number) {
         this.http.get('https://reqres.in/api/users?page=' + id).subscribe(posts => {
-            this.totalPages = posts['total_pages'];
             this.data = [];
             for (let i = 0; i < posts['data'].length; i++) {
                 this.data.push({ firstName: posts['data'][i]['first_name'], lastName: posts['data'][i]['last_name'], avatar: posts['data'][i]['avatar'], id: posts['data'][i]['id'] });
             }
+            this.totalPages = posts['total_pages'];
         });
     }
     public onDelete(id: number) {
         this.http.put('https://reqres.in/api/users/' + id, '').subscribe(posts => {
             console.log(posts);
+            this.deletedMsg = posts['updatedAt'];
         });
     }
 }
