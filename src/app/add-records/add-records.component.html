@@ -16,13 +16,15 @@
             [(ngModel)]="recordDetails.lastName" />
     </div>
     <div class="col-md-6"></div>
-    <div class="col-md-12" *ngIf="recordDetails.id">
-        <b><label for="avatar">Avatar :</label></b>
+    <div *ngIf="recordDetails.id" class="col-md-12">
+        <div class="col-md-12">
+            <b><label for="avatar">Avatar :</label></b>
+        </div>
+        <div class="col-md-6">
+            <img [src]="" width="75" height="75" />
+        </div>
+        <div class="col-md-6"></div>
     </div>
-    <div class="col-md-6" *ngIf="recordDetails.id">
-        <img [src]="" width="75" height="75" />
-    </div>
-    <!-- <div class="col-md-6"></div> -->
     <br><br><br>
     <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1">
         <button class="btn btn-secondary" (click)="onSubmit()"

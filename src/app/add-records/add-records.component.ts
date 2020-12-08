@@ -10,8 +10,7 @@ import { recordType } from '../shared/recordType.model';
 })
 export class AddRecordsComponent implements OnInit {
   public recordDetails: recordType;
-  // public firstName: string;
-  // public lastName: string;
+
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.recordDetails = { firstName: "", lastName: "", avatar: "", id: null };
   }
@@ -24,9 +23,21 @@ export class AddRecordsComponent implements OnInit {
       this.recordDetails.lastName = "";
     }
   }
-
   public onSubmit() {
+    if (this.route.snapshot.params.id !== "new") {
+      this.onUpdate();
+    } else {
+      this.onAdd();
+    }
+  }
+  public onAdd() {
     this.http.post('https://reqres.in/api/users', '{ "name": "firstName", "job": "lastName" }').subscribe(posts => {
+      console.log("GOT RESPONSE FROM SERVER");
+      console.log(posts);
+    });
+  }
+  public onUpdate() {
+    this.http.put('https://reqres.in/api/users/' + this.recordDetails.id, '{ "name": "this.recordDetails.firstName", "job": this.recordDetails.lastName }').subscribe(posts => {
       console.log("GOT RESPONSE FROM SERVER");
       console.log(posts);
     });
