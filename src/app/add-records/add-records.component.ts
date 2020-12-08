@@ -17,6 +17,7 @@ export class AddRecordsComponent implements OnInit {
   public onSubmit() {
     this.http.post('https://reqres.in/api/users', '{ "name": "firstName", "job": "lastName" }').subscribe(posts => {
       console.log("GOT RESPONSE FROM SERVER");
+      console.log(posts);
     });
   }
 }
