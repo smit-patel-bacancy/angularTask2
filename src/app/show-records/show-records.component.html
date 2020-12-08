@@ -22,7 +22,7 @@
     <nav>
         <ul class="pagination">
             <div *ngFor="let x of ' '.repeat(totalPages).split(''),let i = index">
-                <li class="page-item" [active]="currentPage == i+1"><a class="page-link"
+                <li class="page-item" [ngClass]="{'highlightPage': currentPage === i+1}"><a class="page-link"
                         (click)="getData(i+1)">{{i+1}}</a></li>
             </div>
         </ul>

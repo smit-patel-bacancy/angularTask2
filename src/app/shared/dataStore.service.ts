@@ -10,13 +10,12 @@ export class dataStoreService implements OnInit {
     public totalPages: number;
 
     constructor(private http: HttpClient) {
-        this.getData(1);
+        this.getData(0);
     }
 
-    ngOnInit(): void {
+    ngOnInit(): void { }
 
-    }
-    getData(id) {
+    public getData(id: number) {
         this.http.get('https://reqres.in/api/users?page=' + id).subscribe(posts => {
             this.totalPages = posts['total_pages'];
             this.data = [];
@@ -25,8 +24,7 @@ export class dataStoreService implements OnInit {
             }
         });
     }
-    onDelete(id) {
-        console.log(id);
+    public onDelete(id: number) {
         this.http.put('https://reqres.in/api/users/' + id, '').subscribe(posts => {
             console.log(posts);
         });

@@ -1,4 +1,5 @@
-.active{
+.highlightPage{
     text-decoration: underline;
-     color: red;
+    color: red;
+    font: bold 20px/30px Georgia, serif;
 }

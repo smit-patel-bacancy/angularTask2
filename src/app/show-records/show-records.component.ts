@@ -6,12 +6,12 @@ import { dataStoreService } from '../shared/dataStore.service';
 @Component({
   selector: 'app-show-records',
   templateUrl: './show-records.component.html',
-  styleUrls: ['./show-records.component.css'],
+  styleUrls: ['./show-records.component.css']
 })
 export class ShowRecordsComponent implements OnInit {
   public data: recordType[] = [];
   public totalPages: number;
-  public currentPage: number;
+  public currentPage: number = 1;
 
   constructor(private http: HttpClient, private dataService: dataStoreService) {
     this.data = this.dataService.data;
@@ -22,11 +22,12 @@ export class ShowRecordsComponent implements OnInit {
     this.dataService.getData(1);
     this.data = this.dataService.data;
   }
-  getData(currentPage) {
+  public getData(currentPage: number) {
     this.dataService.getData(currentPage);
     this.data = this.dataService.data;
+    this.currentPage = currentPage;
   }
-  onDelete(id) {
+  public onDelete(id: number) {
     this.dataService.onDelete(id);
     this.getData(this.currentPage);
   }
