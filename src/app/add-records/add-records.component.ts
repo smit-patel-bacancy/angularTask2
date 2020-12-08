@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-records.component.css']
 })
 export class AddRecordsComponent implements OnInit {
-  firstName;
-  lastName;
+  public firstName: string;
+  public lastName: string;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {

@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class EditRecordsComponent implements OnInit {
-  details: recordType;
-  index: number;
+  public details: recordType;
+  public index: number;
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
