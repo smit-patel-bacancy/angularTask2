@@ -13,7 +13,7 @@
             <td>{{x.lastName}}</td>
             <td><img src="{{x.avatar}}" width="75" height="75" /></td>
             <td>
-                <a (click)="onSubmitForm(i)" [routerLink]="[x.id]">Edit </a>
+                <a [routerLink]="[i]">Edit </a>
                 <a (click)="onDelete(x.id)">| Delete</a>
             </td>
         </tr>
@@ -22,9 +22,9 @@
     <nav>
         <ul class="pagination">
             <div *ngFor="let x of ' '.repeat(totalPages).split(''),let i = index">
-                <li class="page-item"><a class="page-link" (click)="getData(i+1)">{{i+1}}</a></li>
+                <li class="page-item" [active]="currentPage == i+1"><a class="page-link"
+                        (click)="getData(i+1)">{{i+1}}</a></li>
             </div>
         </ul>
     </nav>
-    <!-- <app-edit-records [details]="data" *ngIf="1"></app-edit-records> -->
 </table>

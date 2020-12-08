@@ -6,6 +6,7 @@ import { ShowRecordsComponent } from './show-records/show-records.component';
 import { AddRecordsComponent } from './add-records/add-records.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { dataStoreService } from './shared/dataStore.service';
 
 const appRoutes: Routes = [
   { path: 'recordlist', component: ShowRecordsComponent },
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [dataStoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

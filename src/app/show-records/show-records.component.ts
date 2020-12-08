@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { recordType } from '../shared/recordType.model';
+import { dataStoreService } from '../shared/dataStore.service';
 
 @Component({
   selector: 'app-show-records',
@@ -12,33 +13,22 @@ export class ShowRecordsComponent implements OnInit {
   public totalPages: number;
   public currentPage: number;
 
-  @Output() onSubmit = new EventEmitter<recordType>();
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dataService: dataStoreService) {
+    this.data = this.dataService.data;
+    this.totalPages = this.dataService.totalPages;
+  }
 
   ngOnInit(): void {
-    this.getData(1);
+    this.dataService.getData(1);
+    this.data = this.dataService.data;
   }
   getData(currentPage) {
-    this.http.get('https://reqres.in/api/users?page=' + currentPage).subscribe(posts => {
-      this.totalPages = posts['total_pages'];
-      // console.log(posts);
-      this.data = [];
-      for (let i = 0; i < posts['data'].length; i++) {
-        this.data.push({ firstName: posts['data'][i]['first_name'], lastName: posts['data'][i]['last_name'], avatar: posts['data'][i]['avatar'], id: posts['data'][i]['id'] });
-      }
-    });
+    this.dataService.getData(currentPage);
+    this.data = this.dataService.data;
   }
   onDelete(id) {
-    // console.log(id);
-    this.http.put('https://reqres.in/api/users/' + id, '').subscribe(posts => {
-      console.log(posts);
-      this.getData(this.currentPage);
-    });
+    this.dataService.onDelete(id);
+    this.getData(this.currentPage);
   }
 
-  onSubmitForm(id) {
-    // console.log(this.data[id]);
-    this.onSubmit.emit(this.data[id]);
-  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { recordType } from '../shared/recordType.model';
+import { dataStoreService } from '../shared/dataStore.service';
 
 @Component({
   selector: 'app-add-records',
@@ -11,16 +12,13 @@ import { recordType } from '../shared/recordType.model';
 export class AddRecordsComponent implements OnInit {
   public recordDetails: recordType;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
-    this.recordDetails = { firstName: "", lastName: "", avatar: "", id: null };
+  constructor(private http: HttpClient, private route: ActivatedRoute, private dataService: dataStoreService) {
+    this.recordDetails;
   }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params.id);
     if (this.route.snapshot.params.id !== "new") {
-      this.recordDetails.id = this.route.snapshot.params.id;
-      this.recordDetails.firstName = "";
-      this.recordDetails.lastName = "";
+      this.recordDetails = this.dataService.data[this.route.snapshot.params.id];
     }
   }
   public onSubmit() {
