@@ -1,5 +1,3 @@
-<p>show-records works!</p>
-
 <table class="table table-bordered" style="width:800px">
     <thead>
         <tr>
@@ -10,17 +8,15 @@
         </tr>
     </thead>
     <tbody>
-        <!-- <div> -->
         <tr *ngFor="let x of data, let i = index">
             <td>{{x.firstName}}</td>
             <td>{{x.lastName}}</td>
             <td><img src="{{x.avatar}}" width="75" height="75" /></td>
             <td>
-                <a routerLinkActive="router-link-active" [routerLink]="[i]">Edit </a>
+                <a (click)="onSubmitForm(i)" [routerLink]="[i]">Edit </a>
                 <a (click)="onDelete(x.id)">| Delete</a>
             </td>
         </tr>
-        <!-- </div> -->
     </tbody>
 
     <nav>

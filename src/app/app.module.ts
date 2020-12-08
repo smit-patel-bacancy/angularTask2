@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ShowRecordsComponent } from './show-records/show-records.component';
 import { AddRecordsComponent } from './add-records/add-records.component';
 import { RouterModule, Routes } from '@angular/router';
-import { EditRecordsComponent } from './edit-records/edit-records.component';
+import { EditRecordsComponent } from './show-records/edit-records/edit-records.component';
 import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
