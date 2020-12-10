@@ -27,21 +27,9 @@ export class AddRecordsComponent implements OnInit {
   }
   public onSubmit() {
     if (this.route.snapshot.params.id !== "new") {
-      this.onUpdate();
+      this.dataService.onUpdate(this.recordDetails);
     } else {
-      this.onAdd();
+      this.dataService.onAdd(this.recordDetails);
     }
-  }
-  public onAdd() {
-    this.http.post('https://reqres.in/api/users', '{ "name": "firstName", "job": "lastName" }').subscribe(posts => {
-      console.log("Got Response From Server...");
-      console.log(posts);
-    });
-  }
-  public onUpdate() {
-    this.http.put('https://reqres.in/api/users/' + this.recordDetails.id, '{ "name": "this.recordDetails.firstName", "job": this.recordDetails.lastName }').subscribe(posts => {
-      console.log("Got Response From Server...");
-      console.log(posts);
-    });
   }
 }

@@ -30,4 +30,16 @@ export class dataStoreService implements OnInit {
             this.deletedMsg = posts['updatedAt'];
         });
     }
+    public onAdd(recordDetails: recordType) {
+        this.http.post('https://reqres.in/api/users', '{ "name": recordDetails.firstName, "job": recordDetails.lastName }').subscribe(posts => {
+            console.log("Got Response From Server...");
+            console.log(posts);
+        });
+    }
+    public onUpdate(recordDetails: recordType) {
+        this.http.put('https://reqres.in/api/users/' + recordDetails.id, '{ "name": recordDetails.firstName, "job": recordDetails.lastName }').subscribe(posts => {
+            console.log("Got Response From Server...");
+            console.log(posts);
+        });
+    }
 }
